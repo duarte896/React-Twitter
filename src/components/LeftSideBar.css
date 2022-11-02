@@ -1,0 +1,36 @@
+#leftSidebar {
+  padding: 20px;
+}
+
+#leftSidebar a {
+  margin: 10px;
+}
+
+#leftSidebar .tweetbutton {
+  padding: 10px;
+  border-radius: 50%;
+  margin-right: -10px;
+  background-color: #1d9bf0;
+}
+.links {
+  text-decoration: none;
+  color: black;
+}
+.btn-tweet {
+  background-color: var(--colortwitterblue);
+  color: white;
+}
+.btn-popover {
+  border: none;
+  padding: 0;
+  background-color: white;
+}
+.btn-popover img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 50px;
+  height: 50px;
+}
+.izquierdo {
+  height: 95vh;
+}
