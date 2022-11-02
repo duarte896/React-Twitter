@@ -1,0 +1,45 @@
+.background {
+  width: 100%;
+  height: 171px;
+  background-color: #1d9bf0;
+}
+.costumBorder {
+  border-bottom: 1px solid #f3f3f3;
+  border-left: 1px solid #f3f3f3;
+  border-right: 1px solid #f3f3f3;
+  height: 390px;
+}
+
+.profilePhoto {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  position: relative;
+  top: -76px;
+  padding: 15px;
+}
+
+.profileinfo {
+  position: relative;
+  bottom: 85px;
+  padding: 15px;
+}
+
+.profilePhoto img {
+  object-fit: cover;
+  border: 5px white solid;
+
+  border-radius: 50%;
+  width: 132px;
+  height: 132px;
+}
+#spanDiv {
+  background-color: #1d9bf0;
+  height: 4px;
+  border-radius: 9999px;
+}
+.alignTweet {
+  position: relative;
+  bottom: 85px;
+  padding: 15px;
+}
