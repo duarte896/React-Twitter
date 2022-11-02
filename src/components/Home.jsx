@@ -1,4 +1,7 @@
 import "./Home.css";
+import RightSidebar from "./RightSideBar";
+import LeftSidebar from "./LeftSideBar";
+import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 
 function Home() {
   return (
@@ -6,14 +9,17 @@ function Home() {
       <div className="container">
         <div className="row">
           <div className="col-2">
-            {/* <%- include("partials/leftSidebar") %> */}
+            <LeftSidebar />
           </div>
           <div className="col-8">
             <div>
               <h2 id="titleHome">Home</h2>
               <div className="d-flex" id="tweet">
                 <div className="tweetFoto">
-                  <img alt="Foto de perfil de usuario" />
+                  <img
+                    src={ProfileButtonImage}
+                    alt="Foto de perfil de usuario"
+                  />
                 </div>
                 <form action="/tweet/store" method="post">
                   <p>
@@ -42,7 +48,7 @@ function Home() {
             </div>
           </div>
           <div className="col-2">
-            {/* <%- include("partials/rightSidebar") %> */}
+            <RightSidebar />
           </div>
         </div>
       </div>

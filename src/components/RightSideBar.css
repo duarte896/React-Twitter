@@ -1,0 +1,111 @@
+aside {
+  margin-left: 20px;
+}
+
+aside h2 {
+  font-size: 20px;
+  line-height: 24.2px;
+  font-weight: 600;
+}
+aside h3 {
+  font-size: 13px;
+  line-height: 15.73px;
+  font-weight: 400;
+  margin: 0;
+  color: #647788;
+}
+
+aside p {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 19.36px;
+  margin: 0;
+}
+
+aside span {
+  font-size: 13px;
+  line-height: 15.73px;
+  font-weight: 400;
+  color: #647788;
+  margin: 0;
+}
+
+aside img {
+  width: 50px;
+  height: 50px;
+}
+
+.sidebarTopWrapper {
+  width: 350px;
+  height: 300px;
+  background-color: #f7f9f9;
+  border-radius: 15px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.sidebarBottomWrapper {
+  width: 350px;
+  background-color: #f7f9f9;
+  border-radius: 15px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+aside .sidebarBottomWrapper span {
+  font-size: 16px;
+}
+
+.sidebarBottomWrapper p {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+.sidebarBottomWrapper button {
+  border-radius: 45px;
+  width: 100px;
+  height: 38px;
+  background-color: #1d9bf0;
+  margin-top: 0px;
+}
+
+.divSuggestions {
+  padding-left: 0;
+}
+
+.divSuggestions img {
+  margin-right: 6px;
+}
+
+.divSuggestions p {
+  padding-left: 0;
+  margin-top: 6px;
+  margin-bottom: -5px;
+}
+
+.leftIcon {
+  padding-left: 30px;
+}
+
+.featherContainer {
+  background-color: #1d9bf0;
+  border-radius: 50%;
+  padding: 5px;
+  padding-top: 8px;
+  width: 40px;
+  height: 40px;
+}
+
+.asdf {
+  margin-left: 5px;
+}
+
+.featherContainer {
+  margin-left: -8px;
+}
+
+.profileLeft {
+  height: 50px;
+  width: 50px;
+}
