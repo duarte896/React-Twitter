@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Profile.css";
 
 function Profile() {
@@ -37,19 +38,12 @@ function Profile() {
                   <h6 class="text-muted">nombre de usuario</h6>
                 </div>
                 <div class="userInteraction d-flex align-items-end">
-                  <a
-                    class="text-muted"
-                    href="/profile/<%= user._id %>/followers"
-                  >
+                  <Link className="text-muted" to="/followers">
                     Followers
-                  </a>
-
-                  <a
-                    class="ms-5 text-muted"
-                    href="/profile/<%= user._id %>/following"
-                  >
+                  </Link>
+                  <Link className="text-muted" to="/following">
                     Following
-                  </a>
+                  </Link>
                 </div>
               </div>
               <div class="alignTweet d-inline-block">

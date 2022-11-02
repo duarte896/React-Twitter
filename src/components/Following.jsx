@@ -1,46 +1,40 @@
 import "./Follower-ing.css";
+import { Link } from "react-router-dom";
 
 function Following() {
   return (
-    <div class="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-3">leftSidebar"</div>
-          <div class="col-6">
-            <div class="d-flex mb-3 mt-3">
-              <a href="/profile/<%= user.id %>">
-                <i class="fa-solid fa-arrow-left"></i>
-              </a>
-              <div class="userinfo ms-5">
+    <div className="main">
+      <div className="container">
+        <div className="row">
+          <div className="col-3">leftSidebar"</div>
+          <div className="col-6">
+            <div className="d-flex mb-3 mt-3">
+              <Link to="/profile">back </Link>
+              <div className="userinfo ms-5">
                 <h5>nombre y apellido</h5>
                 <h6>nombre de usuario</h6>
               </div>
             </div>
-            <div class="w-100 justify-content-center">
-              <a href="/profile/<%= user._id %>/followers">
-                numero de Followers
-              </a>
-              <a href="/profile/<%= user._id %>/following">
-                {" "}
-                numero de Following
-              </a>
+            <div className="w-100 justify-content-center">
+              <Link to="/followers">numero de Followers </Link>
+              <Link to="/following">numero de Following</Link>
             </div>
             <div id="follower">
-              <div class="box d-flex justify-content-between">
-                <div class="d-flex">
-                  <div class="followerPhoto">
+              <div className="box d-flex justify-content-between">
+                <div className="d-flex">
+                  <div className="followerPhoto">
                     <img
                       src="<%=following.avatar%>"
                       alt="Foto de perfil de usuario"
                     />
                   </div>
                   <div>
-                    <h5 class="me-2">
+                    <h5 className="me-2">
                       <a href="/profile/<%= following._id %>/following">
-                        Nombre y Apellido{" "}
+                        Nombre y Apellido
                       </a>
                     </h5>
-                    <h6 class="user card-subtitle mb-2 text-muted">
+                    <h6 className="user card-subtitle mb-2 text-muted">
                       @nombre de usuario
                     </h6>
                   </div>
@@ -67,11 +61,17 @@ function Following() {
                       />
                     </p>
 
-                    <button class="btn btn-tweet rounded-pill" type="submit">
+                    <button
+                      className="btn btn-tweet rounded-pill"
+                      type="submit"
+                    >
                       Following
                     </button>
 
-                    <button class="btn btn-tweet rounded-pill" type="submit">
+                    <button
+                      className="btn btn-tweet rounded-pill"
+                      type="submit"
+                    >
                       Follow
                     </button>
                   </form>
@@ -79,7 +79,7 @@ function Following() {
               </div>
             </div>
           </div>
-          <div class="col-3">rightSidebar"</div>
+          <div className="col-3">rightSidebar"</div>
         </div>
       </div>
     </div>
