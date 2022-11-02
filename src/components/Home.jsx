@@ -2,6 +2,7 @@ import "./Home.css";
 import RightSidebar from "./RightSideBar";
 import LeftSidebar from "./LeftSideBar";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
+import HomeTweets from "./HomeTweets";
 
 function Home() {
   return (
@@ -44,7 +45,7 @@ function Home() {
                   </div>
                 </form>
               </div>
-              {/* <%- include("partials/homeTweets") %> */}
+              <HomeTweets />
             </div>
           </div>
           <div className="col-2">
