@@ -1,0 +1,52 @@
+#background {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  background-color: #074874;
+}
+#left {
+  background-color: #1d9bf0;
+  border-top-left-radius: 2%;
+  border-bottom-left-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: baseline;
+}
+#right {
+  border-top-right-radius: 2%;
+  border-bottom-right-radius: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.formRegister {
+  padding: 70px 85px;
+}
+.formLogin {
+  width: 22.25rem;
+}
+.margin-aligment {
+  margin: 45px;
+}
+#linkRegister {
+  text-decoration: none;
+  color: black;
+}
+#skyBlueButtom {
+  background-color: #1d9bf0;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+#cardHeight {
+  height: 810px;
+}
+@media (max-width: 774px) {
+  #left {
+    display: none;
+  }
+  #right {
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+  }
+}
