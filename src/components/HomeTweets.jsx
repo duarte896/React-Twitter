@@ -1,34 +1,49 @@
 import "./HomeTweets.css";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function HomeTweets() {
+  const [tweets, setTweets] = useState([]);
+
+  const getTweets = async () => {
+    const response = await axios.get(`http://localhost:8000/`);
+
+    setTweets([response.data.tweets]);
+    console.log(response.data.tweets);
+  };
+
+  useEffect(() => {
+    getTweets();
+  }, []);
+
   return (
-    <div class="d-flex flex-column">
+    <div className="d-flex flex-column">
       <div id="tweet">
-        <div class="d-flex">
-          <div class="tweetFoto">
+        <div className="d-flex">
+          <div className="tweetFoto">
             <img src={ProfileButtonImage} alt="Foto de perfil de usuario" />
           </div>
           <div>
-            <div class="tweetUser d-flex">
-              <h5 class="me-2">
+            <div className="tweetUser d-flex">
+              <h5 className="me-2">
                 <a href="/profile/<%= tweets[i].author._id %> ">
                   Nombre del usuario
                 </a>
               </h5>
-              <h6 class="user card-subtitle mb-2 text-muted">
+              <h6 className="user card-subtitle mb-2 text-muted">
                 @Fulano.DeTal99
               </h6>
             </div>
-            <p class="card-text">
+            <p className="card-text">
               contenido del tweet Lorem ipsum dolor sit amet, consectetur
               adipisicing elit. Ea, sint?
             </p>
           </div>
         </div>
-        <div class="actions">
+        <div className="actions">
           <form
-            class="marginHeart"
+            className="marginHeart"
             action="/tweet/<%= tweets[i].id %>/like"
             method="post"
           >
@@ -42,10 +57,10 @@ function HomeTweets() {
             </p>
 
             <button type="submit">
-              <i class="fa-solid fa-heart"></i>
+              <i className="fa-solid fa-heart"></i>
             </button>
 
-            <label for="">aca iria el numero de likes</label>
+            <label htmlFor="">aca iria el numero de likes</label>
           </form>
         </div>
       </div>
