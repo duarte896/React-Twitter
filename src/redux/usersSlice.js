@@ -3,8 +3,8 @@ const usersSlice = createSlice({
   name: "users",
   initialState: [],
   reducers: {
-    createList(state, action) {
-      return state;
+    storeToken(state, action) {
+      return [action.payload];
     },
     updateList(state, action) {
       return state;
@@ -15,5 +15,5 @@ const usersSlice = createSlice({
   },
 });
 const { actions, reducer } = usersSlice;
-export const { createList, updateList, deleteList } = actions;
+export const { storeToken, updateList, deleteList } = actions;
 export default reducer;

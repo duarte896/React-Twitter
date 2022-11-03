@@ -2,12 +2,15 @@ import loginLogo from "../img/logoLoginRegister.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { storeToken } from "../redux/usersSlice";
 import "./Login-Signup.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await axios({
@@ -20,6 +23,7 @@ function Login() {
       params: {},
     });
     console.log(response.data);
+    dispatch(storeToken(response.data));
 
     navigate("/");
   };
