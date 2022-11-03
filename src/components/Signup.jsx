@@ -43,7 +43,8 @@ function Signup() {
               className="formRegister"
               method="post"
               onSubmit={(e) => {
-                createUser(), e.preventDefault();
+                createUser();
+                e.preventDefault();
               }}
             >
               <h2>Sign up</h2>
