@@ -3,8 +3,20 @@ import RightSidebar from "./RightSideBar";
 import LeftSidebar from "./LeftSideBar";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 import HomeTweets from "./HomeTweets";
-
+import axios from "axios";
 function Home() {
+  const getTweets = async () => {
+    const response = await axios.get(`https://localhost:8000/`);
+
+    setMovies([...movies, ...response.data.results]);
+    setLoaded(true);
+    //el spread es para que cada vez que se setee movies se agregue lo anterior para que funque el scroll infinito
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, [page]);
+
   return (
     <div className="main">
       <div className="container">

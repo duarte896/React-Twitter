@@ -12,10 +12,11 @@ function Signup() {
   const [password, setPassword] = useState({});
   const [avatar, setAvatar] = useState({});
 
-  const createUser = async () => {
+  const createUser = async (e) => {
+    e.preventDefault();
     const response = await axios({
       method: "POST",
-      url: "localhost:8000/signup",
+      url: "http://localhost:8000/signup",
       data: {
         firstname: firstName,
         lastname: lastName,
@@ -39,13 +40,7 @@ function Signup() {
             <h2 className="margin-aligment">Hi! Welcome to Twitter Clone 👋</h2>
           </div>
           <div id="right" className="col bg-white">
-            <form
-              className="formRegister"
-              method="post"
-              onSubmit={(e) => {
-                createUser(), e.preventDefault();
-              }}
-            >
+            <form className="formRegister" method="post" onSubmit={createUser}>
               <h2>Sign up</h2>
               <small>Create and account and star using Twitter</small>
               <div className="mb-1">
