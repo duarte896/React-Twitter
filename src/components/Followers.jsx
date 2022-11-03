@@ -5,16 +5,16 @@ import LeftSidebar from "./LeftSideBar";
 
 function Followers() {
   return (
-    <div class="main">
-      <div class="container">
-        <div class="row">
-          <div class="col-3">
+    <div className="main">
+      <div className="container">
+        <div className="row">
+          <div className="col-3">
             <LeftSidebar />
           </div>
-          <div class="col-6">
-            <div class="d-flex mb-3 mt-3">
+          <div className="col-6">
+            <div className="d-flex mb-3 mt-3">
               <Link to="/profile">back </Link>
-              <div class="userinfo ms-5">
+              <div className="userinfo ms-5">
                 <h5>nombre y apellido</h5>
                 <h6>@nombre de usuario</h6>
               </div>
@@ -24,18 +24,18 @@ function Followers() {
               <Link to="/following">numero de Following</Link>
             </div>
             <div id="follower">
-              <div class="box d-flex justify-content-between">
-                <div class="d-flex">
-                  <div class="followerPhoto">
+              <div className="box d-flex justify-content-between">
+                <div className="d-flex">
+                  <div className="followerPhoto">
                     <img src="" alt="Foto de perfil de usuario" />
                   </div>
                   <div>
-                    <h5 class="me-2">
+                    <h5 className="me-2">
                       <a href="/profile/<%= follower._id %>/followers">
                         nombre y apellido
                       </a>
                     </h5>
-                    <h6 class="user card-subtitle mb-2 text-muted">
+                    <h6 className="user card-subtitle mb-2 text-muted">
                       nombre de usuario
                     </h6>
                   </div>
@@ -59,11 +59,17 @@ function Followers() {
                       />
                     </p>
 
-                    <button class="btn btn-tweet rounded-pill" type="submit">
+                    <button
+                      className="btn btn-tweet rounded-pill"
+                      type="submit"
+                    >
                       Following
                     </button>
 
-                    <button class="btn btn-tweet rounded-pill" type="submit">
+                    <button
+                      className="btn btn-tweet rounded-pill"
+                      type="submit"
+                    >
                       Follow
                     </button>
                   </form>
@@ -71,7 +77,7 @@ function Followers() {
               </div>
             </div>
           </div>
-          <div class="col-3">
+          <div className="col-3">
             <RightSidebar />
           </div>
         </div>
