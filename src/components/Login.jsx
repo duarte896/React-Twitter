@@ -1,7 +1,15 @@
-import "./Login-Signup.css";
 import loginLogo from "../img/logoLoginRegister.svg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import "./Login-Signup.css";
+
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <main id="background">
       <div className="container">
@@ -11,7 +19,7 @@ function Login() {
             <h2 className="margin-aligment">Hi! Welcome to Twitter Clone 👋</h2>
           </div>
           <div id="right" className="col bg-white">
-            <form className="formLogin" action="">
+            <form className="formLogin" action="" onSubmit={handleSubmit}>
               <h2>Login</h2>
               <small>Ready to start using Twitter?</small>
               <div className="mb-1">
@@ -22,6 +30,8 @@ function Login() {
                   id="email"
                   name="email"
                   placeholder="Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="mb-1">
@@ -32,6 +42,8 @@ function Login() {
                   id="password"
                   name="password"
                   placeholder="Password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
               <button
@@ -53,4 +65,5 @@ function Login() {
     </main>
   );
 }
+
 export default Login;
