@@ -1,13 +1,27 @@
 import loginLogo from "../img/logoLoginRegister.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios";
 import "./Login-Signup.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const response = await axios({
+      method: "POST",
+      url: "http://localhost:8000/tokens",
+      data: {
+        email: email,
+        password: password,
+      },
+      params: {},
+    });
+    console.log(response.data);
+
+    navigate("/");
   };
 
   return (
@@ -46,6 +60,7 @@ function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
+              {/* <MensajeDeEror /> */}
               <button
                 id="skyBlueButtom"
                 type="submit"

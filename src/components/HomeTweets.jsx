@@ -1,7 +1,24 @@
 import "./HomeTweets.css";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function HomeTweets() {
+  const [tweets, setTweets] = useState([]);
+
+  const getTweets = async () => {
+    const response = await axios({
+      method: "GET",
+      url: "http://localhost:8000/",
+    });
+
+    setTweets([response.data.tweets[0]]);
+  };
+
+  useEffect(() => {
+    getTweets();
+  }, []);
+  console.log(tweets);
   return (
     <div className="d-flex flex-column">
       <div id="tweet">
@@ -54,3 +71,9 @@ function HomeTweets() {
 }
 
 export default HomeTweets;
+
+/* const getTweets = async () => {
+  const response = await axios.get(`http://localhost:8000/`);
+
+  setTweets([response.data.tweets]);
+}; */

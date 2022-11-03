@@ -1,6 +1,6 @@
 import "./Login-Signup.css";
 import signupLogo from "../img/logoLoginRegister.svg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -12,6 +12,7 @@ function Signup() {
   const [password, setPassword] = useState({});
   const [avatar, setAvatar] = useState({});
 
+  const navigate = useNavigate();
   const createUser = async (e) => {
     e.preventDefault();
     const response = await axios({
@@ -20,8 +21,8 @@ function Signup() {
       data: {
         firstname: firstName,
         lastname: lastName,
-        username: eMail,
-        email: userName,
+        username: userName,
+        email: eMail,
         password: password,
         avatar: avatar,
       },
@@ -29,6 +30,8 @@ function Signup() {
         // Aquí se pueden pasar parámetros que irían en el query string.
       },
     });
+
+    navigate("/login");
   };
 
   return (
