@@ -5,22 +5,41 @@ import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 import HomeTweet from "./HomeTweet";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 function Home() {
   const [tweets, setTweets] = useState([]);
+  const [newTweetContent] = useState("");
+  const user = useSelector((state) => state.user);
 
   useEffect(() => {
     const getTweets = async () => {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/",
+        /*  headers: { Authorization: `Bearer ${user[0].token}` }, */
       });
-      console.log(response.data);
+
       setTweets(response.data);
     };
 
     getTweets();
   }, []);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const response = await axios({
+      method: "POST",
+      url: "http://localhost:8000/tweet/store",
+      data: {
+        user: "63651855a743765460023296",
+        content: "newTweetContent",
+        author: "ger",
+        username: "uru",
+      },
+      params: {},
+    });
+  };
 
   return (
     <div className="main">
@@ -39,7 +58,7 @@ function Home() {
                     alt="Foto de perfil de usuario"
                   />
                 </div>
-                <form action="/tweet/store" method="post">
+                <form onSubmit={handleSubmit}>
                   <p>
                     <input type="hidden" id="user" name="user" />
                   </p>
