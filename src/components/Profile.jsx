@@ -103,9 +103,9 @@ function Profile() {
                           <div>
                             <div className="tweetUser d-flex">
                               <h5 className="me-2">
-                                <a href="/profile/<%= tweets[i].author._id %> ">
+                                <Link to={`/profile/${user.username}`}>
                                   {user.firstname + " " + user.lastname}
-                                </a>
+                                </Link>
                               </h5>
                               <h6 className="user card-subtitle mb-2 text-muted">
                                 {"@" + user.username + " . " + tweet.createdAt}
@@ -120,15 +120,6 @@ function Profile() {
                             action="/tweet/<%= tweets[i].id %>/like"
                             method="post"
                           >
-                            <p>
-                              <input
-                                type="hidden"
-                                id="user"
-                                name="user"
-                                value="<%= loggeduser.id %>"
-                              />
-                            </p>
-
                             <button type="submit">
                               <i className="fa-solid fa-heart"></i>
                             </button>

@@ -23,7 +23,7 @@ function Login() {
       },
       params: {},
     });
-    console.log(response.data);
+
     dispatch(storeToken(response.data));
 
     navigate("/");
@@ -63,6 +63,7 @@ function Login() {
                   placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  autoComplete="on"
                 />
               </div>
               {/* <MensajeDeEror /> */}

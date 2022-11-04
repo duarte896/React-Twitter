@@ -8,6 +8,7 @@ import axios from "axios";
 
 function Followers() {
   const [followerList, setFollowerList] = useState([]);
+  const [loggedUserFollowing, setLoggedUserFollowing] = useState([]);
   const [user, setUser] = useState({});
   const params = useParams();
 
@@ -23,6 +24,7 @@ function Followers() {
         },
       });
       setFollowerList(response.data.user.followers);
+      setLoggedUserFollowing(response.data.loggedUser);
       setUser(response.data.user);
     };
     getFollowers();
@@ -48,7 +50,7 @@ function Followers() {
                 <Link to={`/profile/${user.username}/followers`}>
                   Followers
                 </Link>
-                <Link to={`/profile/${user.username}/followers`}>
+                <Link to={`/profile/${user.username}/following`}>
                   Following
                 </Link>
               </div>
@@ -79,36 +81,21 @@ function Followers() {
                           action="/user/<%=follower._id%>/2/follow"
                           method="post"
                         >
-                          <p>
-                            <input
-                              type="hidden"
-                              id="user"
-                              name="user"
-                              value="<%= loggeduser.id %>"
-                            />
-                          </p>
-                          <p>
-                            <input
-                              type="hidden"
-                              id="user"
-                              name="hostuser"
-                              value="<%= user.id %>"
-                            />
-                          </p>
-
-                          <button
-                            className="btn btn-tweet rounded-pill"
-                            type="submit"
-                          >
-                            Following
-                          </button>
-
-                          <button
-                            className="btn btn-tweet rounded-pill"
-                            type="submit"
-                          >
-                            Follow
-                          </button>
+                          {loggedUserFollowing.includes(follower._id) ? (
+                            <button
+                              className="btn btn-tweet rounded-pill"
+                              type="submit"
+                            >
+                              Following
+                            </button>
+                          ) : (
+                            <button
+                              className="btn btn-tweet rounded-pill"
+                              type="submit"
+                            >
+                              Follow
+                            </button>
+                          )}
                         </form>
                       </div>
                     </div>

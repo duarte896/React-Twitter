@@ -3,8 +3,11 @@ import HomeSvg from "../img/HomeImage.svg";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 import TwitterLogoImage from "../img/TwitterLogoImage.svg";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function leftSidebar() {
+function LeftSidebar() {
+  const user = useSelector((state) => state.user[0].loggedUser);
+
   return (
     <div className="izquierdo mt-4 d-flex flex-column justify-content-between position-fixed">
       <div className="d-flex flex-column">
@@ -15,7 +18,7 @@ function leftSidebar() {
           <img className="me-4" src={HomeSvg} alt="Home Icon" />
           Home
         </Link>
-        <Link to="/profile/prueba" className="mb-4 asdf links">
+        <Link to={`/profile/${user.username}`} className="mb-4 asdf links">
           <img className="me-4" src={ProfileButtonImage} alt="Home Icon" />
           Profile
         </Link>
@@ -48,4 +51,4 @@ function leftSidebar() {
   );
 }
 
-export default leftSidebar;
+export default LeftSidebar;

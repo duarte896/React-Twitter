@@ -1,4 +1,5 @@
 import "./HomeTweets.css";
+import { Link } from "react-router-dom";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 
 function HomeTweet({ tweet }) {
@@ -12,9 +13,9 @@ function HomeTweet({ tweet }) {
           <div>
             <div className="tweetUser d-flex">
               <h5 className="me-2">
-                <a href={`/profile/${tweet.author._id}`}>
+                <Link to={`/profile/${tweet.author.username}`}>
                   {tweet.author.firstname + " " + tweet.author.lastname}
-                </a>
+                </Link>
               </h5>
               <h6 className="user card-subtitle mb-2 text-muted">
                 @{tweet.author.username}
