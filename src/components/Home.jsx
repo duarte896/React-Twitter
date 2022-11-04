@@ -17,7 +17,7 @@ function Home() {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/",
-        /*  headers: { Authorization: `Bearer ${user[0].token}` }, */
+        headers: { Authorization: `Bearer ${user[0].token}` },
       });
 
       setTweets(response.data);

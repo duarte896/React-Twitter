@@ -5,9 +5,11 @@ import LeftSidebar from "./LeftSideBar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
 function Profile() {
   const params = useParams();
+  const loggedUser = useSelector((state) => state.user);
   const [userTweets, setUserTweets] = useState([]);
   const [user, setUser] = useState([]);
   useEffect(() => {
@@ -15,8 +17,8 @@ function Profile() {
       const response = await axios({
         method: "GET",
         url: `http://localhost:8000/profile/${params.username}`,
+        headers: { Authorization: `Bearer ${loggedUser[0].token}` },
       });
-      console.log(response.data.user);
       setUserTweets(response.data.user.tweets);
       setUser(response.data.user);
     };
@@ -35,7 +37,7 @@ function Profile() {
                 <div className="background"></div>
 
                 <div className="profilePhoto">
-                  <img src="" alt="Imagen de usuario" />
+                  <img src={user.avatar} alt="Imagen de usuario" />
                   <form action="/user/<%=user._id%>/follow" method="post">
                     <p>
                       <input
@@ -69,13 +71,13 @@ function Profile() {
                   <div className="userInteraction d-flex align-items-end">
                     <Link
                       className="text-muted"
-                      to={`/profile/${params.id}/followers`}
+                      to={`/profile/${user.username}/followers`}
                     >
                       Followers
                     </Link>
                     <Link
                       className="text-muted"
-                      to={`/profile/${params.id}/following`}
+                      to={`/profile/${user.username}/following`}
                     >
                       Following
                     </Link>
@@ -93,7 +95,10 @@ function Profile() {
                       <div id="tweet">
                         <div className="d-flex">
                           <div className="tweetFoto">
-                            <img src="" alt="Foto de perfil de usuario" />
+                            <img
+                              src={user.avatar}
+                              alt="Foto de perfil de usuario"
+                            />
                           </div>
                           <div>
                             <div className="tweetUser d-flex">
