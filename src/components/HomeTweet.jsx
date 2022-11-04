@@ -1,45 +1,26 @@
 import "./HomeTweets.css";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
-function HomeTweets() {
-  const [tweets, setTweets] = useState([]);
-  const getTweets = async () => {
-    const response = await axios({
-      method: "GET",
-      url: "http://localhost:8000/",
-    });
-
-    setTweets([response.data.tweets[0]]);
-  };
-
-  useEffect(() => {
-    getTweets();
-  }, []);
-  console.log(tweets);
+function HomeTweet({ tweet }) {
   return (
     <div className="d-flex flex-column">
       <div id="tweet">
         <div className="d-flex">
           <div className="tweetFoto">
-            <img src={ProfileButtonImage} alt="Foto de perfil de usuario" />
+            <img src={tweet.author.avatar} alt="Foto de perfil de usuario" />
           </div>
           <div>
             <div className="tweetUser d-flex">
               <h5 className="me-2">
-                <a href="/profile/<%= tweets[i].author._id %> ">
-                  Nombre del usuario
+                <a href={`/profile/${tweet.author._id}`}>
+                  {tweet.author.firstname + " " + tweet.author.lastname}
                 </a>
               </h5>
               <h6 className="user card-subtitle mb-2 text-muted">
-                @Fulano.DeTal99
+                @{tweet.author.username}
               </h6>
             </div>
-            <p className="card-text">
-              contenido del tweet Lorem ipsum dolor sit amet, consectetur
-              adipisicing elit. Ea, sint?
-            </p>
+            <p className="card-text">{tweet.content}</p>
           </div>
         </div>
         <div className="actions">
@@ -69,10 +50,4 @@ function HomeTweets() {
   );
 }
 
-export default HomeTweets;
-
-/* const getTweets = async () => {
-  const response = await axios.get(`http://localhost:8000/`);
-
-  setTweets([response.data.tweets]);
-}; */
+export default HomeTweet;

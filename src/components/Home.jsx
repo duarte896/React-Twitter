@@ -2,9 +2,26 @@ import "./Home.css";
 import RightSidebar from "./RightSideBar";
 import LeftSidebar from "./LeftSideBar";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
-import HomeTweets from "./HomeTweets";
+import HomeTweet from "./HomeTweet";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function Home() {
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    const getTweets = async () => {
+      const response = await axios({
+        method: "GET",
+        url: "http://localhost:8000/",
+      });
+      console.log(response.data);
+      setTweets(response.data);
+    };
+
+    getTweets();
+  }, []);
+
   return (
     <div className="main">
       <div className="container">
@@ -45,7 +62,10 @@ function Home() {
                   </div>
                 </form>
               </div>
-              <HomeTweets />
+              {tweets &&
+                tweets.map((tweet) => {
+                  return <HomeTweet key={tweet._id} tweet={tweet} />;
+                })}
             </div>
           </div>
           <div className="col-2">
