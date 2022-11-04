@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 
 function HomeTweets() {
   const [tweets, setTweets] = useState([]);
-
   const getTweets = async () => {
     const response = await axios({
       method: "GET",
