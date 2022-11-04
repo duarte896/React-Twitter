@@ -7,6 +7,7 @@ import { storeToken } from "../redux/usersSlice";
 import "./Login-Signup.css";
 
 function Login() {
+  const user = useSelector((state) => state.user);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
