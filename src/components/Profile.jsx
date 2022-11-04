@@ -67,10 +67,16 @@ function Profile() {
                     <h6 className="text-muted">nombre de usuario</h6>
                   </div>
                   <div className="userInteraction d-flex align-items-end">
-                    <Link className="text-muted" to="/followers">
+                    <Link
+                      className="text-muted"
+                      to={`/profile/${params.id}/followers`}
+                    >
                       Followers
                     </Link>
-                    <Link className="text-muted" to="/following">
+                    <Link
+                      className="text-muted"
+                      to={`/profile/${params.id}/following`}
+                    >
                       Following
                     </Link>
                   </div>
