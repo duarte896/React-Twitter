@@ -79,23 +79,6 @@ function Followers() {
                           action="/user/<%=follower._id%>/2/follow"
                           method="post"
                         >
-                          <p>
-                            <input
-                              type="hidden"
-                              id="user"
-                              name="user"
-                              value="<%= loggeduser.id %>"
-                            />
-                          </p>
-                          <p>
-                            <input
-                              type="hidden"
-                              id="user"
-                              name="hostuser"
-                              value="<%= user.id %>"
-                            />
-                          </p>
-
                           <button
                             className="btn btn-tweet rounded-pill"
                             type="submit"
