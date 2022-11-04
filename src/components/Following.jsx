@@ -7,7 +7,7 @@ import LeftSidebar from "./LeftSideBar";
 import axios from "axios";
 
 function Following() {
-  const [followerList, setFollowerList] = useState([]);
+  const [loggedUserFollowing, setLoggedUserFollowing] = useState([]);
   const [followingList, setFollowingList] = useState([]);
   const [user, setUser] = useState({});
   const params = useParams();
@@ -23,8 +23,8 @@ function Following() {
           Authorization: `Bearer ${token}`,
         },
       });
-      setFollowerList(response.data.user.follower);
       setFollowingList(response.data.user.following);
+      setLoggedUserFollowing(response.data.loggedUser);
       setUser(response.data.user);
     };
     getfollowing();
@@ -50,11 +50,11 @@ function Following() {
                 <Link to={`/profile/${user.username}/followers`}>
                   Followers
                 </Link>
-                <Link to={`/profile/${user.username}/followers`}>
+                <Link to={`/profile/${user.username}/following`}>
                   Following
                 </Link>
               </div>
-              <div id="follower">
+              <div id="following">
                 {followingList.map((following) => {
                   return (
                     <div className="box d-flex justify-content-between">
@@ -81,7 +81,7 @@ function Following() {
                           action="/user/<%=follower._id%>/2/follow"
                           method="post"
                         >
-                          {followingList.includes(following.id) ? (
+                          {loggedUserFollowing.includes(following._id) ? (
                             <button
                               className="btn btn-tweet rounded-pill"
                               type="submit"
