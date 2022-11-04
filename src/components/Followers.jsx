@@ -1,9 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./Follower-ing.css";
 import RightSidebar from "./RightSideBar";
+import { useEffect, useState } from "react";
 import LeftSidebar from "./LeftSideBar";
+import axios from "axios";
 
 function Followers() {
+  const [followerList, setFollowerList] = useState([]);
+  const params = useParams();
+
+  const token = useSelector((state) => state.user[0].token);
+  console.log(token);
+
+  const getFollowers = async () => {
+    const response = await axios({
+      method: "GET",
+      url: `http://localhost:8000/profile/${params.id}/followers`,
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    setFollowerList(response.data);
+  };
+  useEffect(() => {
+    getFollowers();
+  }, []);
+
   return (
     <div className="main">
       <div className="container">
