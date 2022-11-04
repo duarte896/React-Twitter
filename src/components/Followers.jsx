@@ -12,7 +12,8 @@ function Followers() {
   const params = useParams();
 
   const token = useSelector((state) => state.user[0].token);
-
+  const loggedUser = useSelector((state) => state.user[0].loggedUser);
+  console.log(loggedUser);
   useEffect(() => {
     const getFollowers = async () => {
       const response = await axios({
@@ -79,19 +80,21 @@ function Followers() {
                           action="/user/<%=follower._id%>/2/follow"
                           method="post"
                         >
+                          {/* {loggedUser.following.includes(follower.id) ? ( */}
                           <button
                             className="btn btn-tweet rounded-pill"
                             type="submit"
                           >
                             Following
                           </button>
-
+                          {/* ) : ( */}
                           <button
                             className="btn btn-tweet rounded-pill"
                             type="submit"
                           >
                             Follow
                           </button>
+                          {/* )} */}
                         </form>
                       </div>
                     </div>
