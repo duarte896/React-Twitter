@@ -10,14 +10,16 @@ function Profile() {
   const params = useParams();
   console.log(params.id);
   const [user, setUser] = useState([]);
+
+  const getUser = async () => {
+    const response = await axios({
+      method: "GET",
+      url: `http://localhost:8000/profile/${params.id}`,
+    });
+    setUser(response.data);
+  };
+  getUser();
   useEffect(() => {
-    const getUser = async () => {
-      const response = await axios({
-        method: "GET",
-        url: `http://localhost:8000/profile/${params.id}`,
-      });
-      setUser(response.data);
-    };
     getUser();
   }, []);
   return (
