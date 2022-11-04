@@ -42,6 +42,8 @@ function Home() {
     });
   };
 
+  console.log("hola");
+
   return (
     <div className="main">
       <div className="container">
