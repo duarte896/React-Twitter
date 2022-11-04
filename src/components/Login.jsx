@@ -22,7 +22,7 @@ function Login() {
       },
       params: {},
     });
-    console.log(response.data);
+
     dispatch(storeToken(response.data));
 
     navigate("/");

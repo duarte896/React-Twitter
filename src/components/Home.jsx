@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 
 function Home() {
   const [tweets, setTweets] = useState([]);
-  const [newTweetContent] = useState("");
+  const [newTweetContent, setNewTweetContent] = useState("");
   const user = useSelector((state) => state.user);
 
   useEffect(() => {
@@ -17,7 +17,7 @@ function Home() {
       const response = await axios({
         method: "GET",
         url: "http://localhost:8000/",
-        /*  headers: { Authorization: `Bearer ${user[0].token}` }, */
+        headers: { Authorization: `Bearer ${user[0].token}` },
       });
 
       setTweets(response.data);
@@ -28,15 +28,16 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await axios({
+    await axios({
       method: "POST",
       url: "http://localhost:8000/tweet/store",
       data: {
-        user: "63651855a743765460023296",
+        user: "63653123d0209ca858a06209",
         content: "newTweetContent",
         author: "ger",
         username: "uru",
       },
+      headers: { Authorization: `Bearer ${user[0].token}` },
       params: {},
     });
   };
@@ -69,6 +70,8 @@ function Home() {
                     cols="40"
                     rows="3"
                     maxLength="140"
+                    value={newTweetContent}
+                    onChange={(e) => setNewTweetContent(e.target.value)}
                   ></textarea>
                   <div className="btn-form">
                     <button
