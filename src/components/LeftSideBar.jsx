@@ -15,10 +15,7 @@ function leftSidebar() {
           <img className="me-4" src={HomeSvg} alt="Home Icon" />
           Home
         </Link>
-        <Link
-          to="/profile/63640a16e8caa3ba4f0857f4"
-          className="mb-4 asdf links"
-        >
+        <Link to="/profile/prueba" className="mb-4 asdf links">
           <img className="me-4" src={ProfileButtonImage} alt="Home Icon" />
           Profile
         </Link>

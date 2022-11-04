@@ -8,18 +8,18 @@ import axios from "axios";
 
 function Profile() {
   const params = useParams();
-  console.log(params.id);
+  const [userTweets, setUserTweets] = useState([]);
   const [user, setUser] = useState([]);
-
-  const getUser = async () => {
-    const response = await axios({
-      method: "GET",
-      url: `http://localhost:8000/profile/${params.id}`,
-    });
-    setUser(response.data);
-  };
-  getUser();
   useEffect(() => {
+    const getUser = async () => {
+      const response = await axios({
+        method: "GET",
+        url: `http://localhost:8000/profile/${params.username}`,
+      });
+      console.log(response.data.user);
+      setUserTweets(response.data.user.tweets);
+      setUser(response.data.user);
+    };
     getUser();
   }, []);
   return (
@@ -63,8 +63,8 @@ function Profile() {
                 </div>
                 <div className="profileinfo d-flex justify-content-between">
                   <div className="userinfo">
-                    <h3>Nombre y apellido</h3>
-                    <h6 className="text-muted">nombre de usuario</h6>
+                    <h3>{user.firstname + " " + user.lastname}</h3>
+                    <h6 className="text-muted">{"@" + user.username}</h6>
                   </div>
                   <div className="userInteraction d-flex align-items-end">
                     <Link
@@ -86,6 +86,57 @@ function Profile() {
                   <div id="spanDiv"></div>
                 </div>
               </div>
+              {userTweets &&
+                userTweets.map((tweet) => {
+                  return (
+                    <div key={tweet._id} className="d-flex flex-column">
+                      <div id="tweet">
+                        <div className="d-flex">
+                          <div className="tweetFoto">
+                            <img src="" alt="Foto de perfil de usuario" />
+                          </div>
+                          <div>
+                            <div className="tweetUser d-flex">
+                              <h5 className="me-2">
+                                <a href="/profile/<%= tweets[i].author._id %> ">
+                                  {user.firstname + " " + user.lastname}
+                                </a>
+                              </h5>
+                              <h6 className="user card-subtitle mb-2 text-muted">
+                                {"@" + user.username + " . " + tweet.createdAt}
+                              </h6>
+                            </div>
+                            <p className="card-text">{tweet.content}</p>
+                          </div>
+                        </div>
+                        <div className="actions">
+                          <form
+                            className="marginHeart"
+                            action="/tweet/<%= tweets[i].id %>/like"
+                            method="post"
+                          >
+                            <p>
+                              <input
+                                type="hidden"
+                                id="user"
+                                name="user"
+                                value="<%= loggeduser.id %>"
+                              />
+                            </p>
+
+                            <button type="submit">
+                              <i className="fa-solid fa-heart"></i>
+                            </button>
+
+                            <label htmlFor="">
+                              aca iria el numero de likes
+                            </label>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
             </div>
             <div className="col-2">
               <RightSidebar />
