@@ -18,7 +18,7 @@ function Following() {
     const getfollowing = async () => {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:8000/profile/${params.username}/following`,
+        url: `${process.env.REACT_APP_API_URL}/profile/${params.username}/following`,
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -46,13 +46,18 @@ function Following() {
                   <h6>@{user.username}</h6>
                 </div>
               </div>
-              <div>
-                <Link to={`/profile/${user.username}/followers`}>
-                  Followers
-                </Link>
-                <Link to={`/profile/${user.username}/following`}>
-                  Following
-                </Link>
+              <div id="head">
+                <div className="link">
+                  <Link to={`/profile/${user.username}/followers`}>
+                    Followers
+                  </Link>
+                </div>
+
+                <div className="link">
+                  <Link to={`/profile/${user.username}/following`}>
+                    Following
+                  </Link>
+                </div>
               </div>
               <div id="following">
                 {followingList.map((following) => {

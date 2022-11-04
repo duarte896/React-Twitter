@@ -19,7 +19,7 @@ function Profile() {
     const getUser = async () => {
       const response = await axios({
         method: "GET",
-        url: `http://localhost:8000/profile/${params.username}`,
+        url: `${process.env.REACT_APP_API_URL}/profile/${params.username}`,
         headers: { Authorization: `Bearer ${loggedUser.token}` },
       });
       setUserTweets(response.data.user.tweets);

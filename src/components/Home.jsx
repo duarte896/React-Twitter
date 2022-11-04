@@ -30,7 +30,7 @@ function Home() {
     e.preventDefault();
     await axios({
       method: "POST",
-      url: "http://localhost:8000/tweet/store",
+      url: `${process.env.REACT_APP_API_URL}/tweet/store`,
       data: {
         user: "63653123d0209ca858a06209",
         content: "newTweetContent",

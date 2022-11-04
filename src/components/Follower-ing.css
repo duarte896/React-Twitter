@@ -15,6 +15,12 @@
   padding: 5px;
 }
 
+#follower button {
+  background-color: #1d9bf0;
+  border-radius: 30px;
+  color: #f3f3f3;
+}
+
 #following {
   padding: 5px;
   border: 1px solid #f3f3f3;
@@ -30,4 +36,16 @@
 
 #following .box {
   padding: 5px;
+}
+
+#head {
+  text-decoration: none;
+  display: flex;
+  margin: 0px 50px;
+}
+
+#head .link {
+  padding: 10px;
+  border: 1px solid #f3f3f3;
+  font-style: none;
 }
