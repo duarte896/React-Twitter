@@ -11,6 +11,7 @@ function Home() {
   const [tweets, setTweets] = useState([]);
   const [newTweetContent, setNewTweetContent] = useState("");
   const user = useSelector((state) => state.user);
+  const [toggle, setToggle] = useState();
 
   useEffect(() => {
     const getTweets = async () => {
@@ -24,25 +25,21 @@ function Home() {
     };
 
     getTweets();
-  }, []);
+  }, [toggle]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     await axios({
       method: "POST",
-      url: "http://localhost:8000/tweet/store",
+      url: `${process.env.REACT_APP_API_URL}/tweet/store`,
       data: {
-        user: "63653123d0209ca858a06209",
-        content: "newTweetContent",
-        author: "ger",
-        username: "uru",
+        content: `${newTweetContent}`,
       },
       headers: { Authorization: `Bearer ${user[0].token}` },
       params: {},
     });
+    setToggle(!toggle);
   };
-
-  console.log("hola");
 
   return (
     <div className="main">

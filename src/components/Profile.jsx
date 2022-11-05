@@ -9,21 +9,30 @@ import { useSelector } from "react-redux";
 
 function Profile() {
   const params = useParams();
-  const loggedUser = useSelector((state) => state.user);
+  const loggedUser = useSelector((state) => state.user[0]);
   const [userTweets, setUserTweets] = useState([]);
   const [user, setUser] = useState([]);
+  const [loggedUserFollowing, setLoggedUserFollowing] = useState([]);
+  const [followerList, setFollowerList] = useState([]);
+  const [followingList, setFollowingList] = useState([]);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios({
         method: "GET",
+
         url: `http://localhost:8000/profile/${params.username}`,
-        headers: { Authorization: `Bearer ${loggedUser[0].token}` },
+        headers: { Authorization: `Bearer ${loggedUser.token}` },
       });
       setUserTweets(response.data.user.tweets);
+      setLoggedUserFollowing(response.data.loggedUserFollowing);
+      setFollowerList(response.data.user.followers);
+      setFollowingList(response.data.user.following);
       setUser(response.data.user);
     };
     getUser();
   }, []);
+  console.log(user._id);
+  console.log(loggedUser.loggedUser.id);
   return (
     user && (
       <div className="main">
@@ -38,30 +47,26 @@ function Profile() {
 
                 <div className="profilePhoto">
                   <img src={user.avatar} alt="Imagen de usuario" />
-                  <form action="/user/<%=user._id%>/follow" method="post">
-                    <p>
-                      <input
-                        type="hidden"
-                        id="user"
-                        name="user"
-                        value="<%= loggeduser.id %>"
-                      />
-                    </p>
 
-                    <button
-                      type="submit"
-                      className="btn btn-tweet rounded-pill mb-3"
-                    >
-                      Following
-                    </button>
-
-                    <button
-                      type="submit"
-                      className="btn btn-tweet rounded-pill mb-3"
-                    >
-                      Follow
-                    </button>
-                  </form>
+                  {user._id !== loggedUser.loggedUser.id && (
+                    <form action="/user/<%=user._id%>/follow" method="post">
+                      {1 < 0 ? (
+                        <button
+                          type="submit"
+                          className="btn btn-tweet rounded-pill mb-3"
+                        >
+                          Following
+                        </button>
+                      ) : (
+                        <button
+                          type="submit"
+                          className="btn btn-tweet rounded-pill mb-3"
+                        >
+                          Follow
+                        </button>
+                      )}
+                    </form>
+                  )}
                 </div>
                 <div className="profileinfo d-flex justify-content-between">
                   <div className="userinfo">
@@ -70,16 +75,16 @@ function Profile() {
                   </div>
                   <div className="userInteraction d-flex align-items-end">
                     <Link
-                      className="text-muted"
+                      className="text-muted me-2"
                       to={`/profile/${user.username}/followers`}
                     >
-                      Followers
+                      {followerList.length} Followers
                     </Link>
                     <Link
                       className="text-muted"
                       to={`/profile/${user.username}/following`}
                     >
-                      Following
+                      {followingList.length} Following
                     </Link>
                   </div>
                 </div>

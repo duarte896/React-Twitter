@@ -17,7 +17,7 @@ function Signup() {
     e.preventDefault();
     const response = await axios({
       method: "POST",
-      url: "http://localhost:8000/signup",
+      url: `${process.env.REACT_APP_API_URL}/signup`,
       data: {
         firstname: firstName,
         lastname: lastName,
