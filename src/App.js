@@ -23,11 +23,14 @@ function App() {
         <Route path="/profile/:username" element={<Profile />} />
         <Route path="/profile/:username/followers" element={<Followers />} />
         <Route path="/profile/:username/following" element={<Following />} />
-        {/* <Route
+        <Route
           path="/login"
-          element={!user.length === 0 ? <Navigate replace to="/" /> : <Login />}
-        /> */}
-        <Route path="/login" element={<Login />} />
+          element={user.length === 0 ? <Login /> : <Navigate replace to="/" />}
+        />
+        <Route
+          path="/signup"
+          element={user.length === 0 ? <Signup /> : <Navigate replace to="/" />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
