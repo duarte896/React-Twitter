@@ -1,11 +1,11 @@
 import "./HomeTweets.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function HomeTweet({ tweet, user, toggle, setToggle }) {
-  const handleSubmit = async (e) => {
+  const handleSubmitDelete = async (e) => {
     e.preventDefault();
     await axios({
       method: "DELETE",
@@ -14,6 +14,20 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
       headers: { Authorization: `Bearer ${user[0].token}` },
     });
     setToggle(!toggle);
+  };
+
+  const handleSubmitLike = async (e) => {
+    e.preventDefault();
+    await axios({
+      method: "POST",
+      url: `${process.env.REACT_APP_API_URL}/tweet/${tweet._id}/like`,
+      data: {
+        content: `${user[0].loggedUser.id}`,
+      },
+      params: { id: tweet._id },
+      headers: { Authorization: `Bearer ${user[0].token}` },
+    });
+    console.log("hola");
   };
 
   return (
@@ -37,7 +51,7 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
             <div className="d-flex justify-content-between ">
               <p className="card-text">{tweet.content}</p>
               {tweet.author.email === user[0].loggedUser.email && (
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmitDelete}>
                   <button type="submit" className="trash">
                     <FontAwesomeIcon icon={faTrash} />
                   </button>
@@ -47,25 +61,16 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
           </div>
         </div>
         <div className="actions">
-          <form
-            className="marginHeart"
-            action="/tweet/<%= tweets[i].id %>/like"
-            method="post"
-          >
+          <form className="marginHeart" onSubmit={handleSubmitLike}>
             <p>
-              <input
-                type="hidden"
-                id="user"
-                name="user"
-                value="<%= loggeduser.id %>"
-              />
+              <input type="hidden" id="user" name="user" value="" />
             </p>
 
             <button type="submit">
-              <i className="fa-solid fa-heart"></i>
+              <FontAwesomeIcon icon={faHeart} />
             </button>
 
-            <label htmlFor="">aca iria el numero de likes</label>
+            <label htmlFor="">{tweet.likes.length}</label>
           </form>
         </div>
       </div>

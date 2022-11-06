@@ -30,6 +30,7 @@
 }
 .trash {
   border: none;
+  background-color: white;
 }
 .trash:hover {
   transform: scale(1.03);

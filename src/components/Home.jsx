@@ -39,6 +39,7 @@ function Home() {
       params: {},
     });
     setToggle(!toggle);
+    console.log("hola");
   };
 
   return (
