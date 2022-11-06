@@ -5,17 +5,6 @@ import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function HomeTweet({ tweet, user, toggle, setToggle }) {
-  const handleSubmitDelete = async (e) => {
-    e.preventDefault();
-    await axios({
-      method: "DELETE",
-      url: `${process.env.REACT_APP_API_URL}/tweet/${tweet._id}`,
-
-      headers: { Authorization: `Bearer ${user[0].token}` },
-    });
-    setToggle(!toggle);
-  };
-
   const handleSubmitLike = async (e) => {
     e.preventDefault();
     await axios({
@@ -27,7 +16,18 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
       params: { id: tweet._id },
       headers: { Authorization: `Bearer ${user[0].token}` },
     });
-    console.log("hola");
+    setToggle(!toggle);
+  };
+
+  const handleSubmitDelete = async (e) => {
+    e.preventDefault();
+    await axios({
+      method: "DELETE",
+      url: `${process.env.REACT_APP_API_URL}/tweet/${tweet._id}`,
+
+      headers: { Authorization: `Bearer ${user[0].token}` },
+    });
+    setToggle(!toggle);
   };
 
   return (

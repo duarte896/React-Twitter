@@ -5,13 +5,15 @@ import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 import HomeTweet from "./HomeTweet";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { reset } from "../redux/usersSlice";
 
 function Home() {
   const [tweets, setTweets] = useState([]);
   const [newTweetContent, setNewTweetContent] = useState("");
   const user = useSelector((state) => state.user);
-  const [toggle, setToggle] = useState();
+  const [toggle, setToggle] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getTweets = async () => {
@@ -39,8 +41,11 @@ function Home() {
       params: {},
     });
     setToggle(!toggle);
-    console.log("hola");
   };
+
+  function handleSubmitLogout() {
+    dispatch(reset());
+  }
 
   return (
     <div className="main">
@@ -82,6 +87,9 @@ function Home() {
                       Tweet
                     </button>
                   </div>
+                </form>
+                <form onSubmit={handleSubmitLogout}>
+                  <button type="submit">Logout</button>
                 </form>
               </div>
               {tweets &&
