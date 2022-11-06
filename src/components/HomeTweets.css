@@ -28,7 +28,12 @@
 .marginHeart {
   margin-left: 67px;
 }
-
+.trash {
+  border: none;
+}
+.trash:hover {
+  transform: scale(1.03);
+}
 #tweet .actions button {
   background: none;
   color: inherit;

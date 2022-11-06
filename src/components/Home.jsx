@@ -85,7 +85,15 @@ function Home() {
               </div>
               {tweets &&
                 tweets.map((tweet) => {
-                  return <HomeTweet key={tweet._id} tweet={tweet} />;
+                  return (
+                    <HomeTweet
+                      key={tweet._id}
+                      tweet={tweet}
+                      user={user}
+                      toggle={toggle}
+                      setToggle={setToggle}
+                    />
+                  );
                 })}
             </div>
           </div>

@@ -1,8 +1,21 @@
 import "./HomeTweets.css";
 import { Link } from "react-router-dom";
-import ProfileButtonImage from "../img/ProfileButtonImage.svg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
 
-function HomeTweet({ tweet }) {
+function HomeTweet({ tweet, user, toggle, setToggle }) {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await axios({
+      method: "DELETE",
+      url: `${process.env.REACT_APP_API_URL}/tweet/${tweet._id}`,
+
+      headers: { Authorization: `Bearer ${user[0].token}` },
+    });
+    setToggle(!toggle);
+  };
+
   return (
     <div className="d-flex flex-column">
       <div id="tweet">
@@ -21,7 +34,16 @@ function HomeTweet({ tweet }) {
                 @{tweet.author.username}
               </h6>
             </div>
-            <p className="card-text">{tweet.content}</p>
+            <div className="d-flex justify-content-between ">
+              <p className="card-text">{tweet.content}</p>
+              {tweet.author.email === user[0].loggedUser.email && (
+                <form onSubmit={handleSubmit}>
+                  <button type="submit" className="trash">
+                    <FontAwesomeIcon icon={faTrash} />
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
         <div className="actions">
