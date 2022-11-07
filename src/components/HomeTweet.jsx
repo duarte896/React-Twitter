@@ -1,8 +1,8 @@
 import "./HomeTweets.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
-import { useSelector } from "react-redux";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 import axios from "axios";
 
 function HomeTweet({ tweet, user, toggle, setToggle }) {
@@ -11,9 +11,7 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
     await axios({
       method: "POST",
       url: `${process.env.REACT_APP_API_URL}/tweet/${tweet._id}/like`,
-      data: {
-        content: `${user[0].loggedUser.id}`,
-      },
+
       params: { id: tweet._id },
       headers: { Authorization: `Bearer ${user[0].token}` },
     });
@@ -64,7 +62,15 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
             </p>
 
             <button type="submit">
-              <FontAwesomeIcon icon={faHeart} />
+              {/*  <i className="bi bi-heart-fill text-danger"></i>
+              <i className="bi bi-heart"></i> */}
+              <i
+                className={
+                  tweet.likes.includes(user[0].loggedUser.id)
+                    ? "bi bi-heart-fill text-danger"
+                    : "bi bi-heart"
+                }
+              ></i>
             </button>
 
             <label htmlFor="">{tweet.likes.length}</label>

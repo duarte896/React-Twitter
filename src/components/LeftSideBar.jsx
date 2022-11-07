@@ -25,7 +25,7 @@ function LeftSidebar() {
           <p className="link-sidebar">Home</p>
         </Link>
         <Link to={`/profile/${user.username}`} className="mb-4 links">
-          <img className="me-4" src={ProfileButtonImage} alt="Home Icon" />
+          <img className="me-4 asdf" src={ProfileButtonImage} alt="Home Icon" />
           <p className="link-sidebar">Profile</p>
         </Link>
       </div>

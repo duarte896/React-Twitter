@@ -39,6 +39,7 @@ function Home() {
       headers: { Authorization: `Bearer ${user[0].token}` },
       params: {},
     });
+    setNewTweetContent("");
     setToggle(!toggle);
   };
 
@@ -55,7 +56,7 @@ function Home() {
               <div className="d-flex" id="tweet">
                 <div className="tweetFoto">
                   <img
-                    src={ProfileButtonImage}
+                    src={user[0].loggedUser.avatar}
                     alt="Foto de perfil de usuario"
                   />
                 </div>
