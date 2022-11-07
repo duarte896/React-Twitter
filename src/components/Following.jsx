@@ -5,6 +5,7 @@ import RightSidebar from "./RightSideBar";
 import { useEffect, useState } from "react";
 import LeftSidebar from "./LeftSideBar";
 import axios from "axios";
+import arrow from "../img/Vector_1.svg";
 
 function Following() {
   const [loggedUserFollowing, setLoggedUserFollowing] = useState([]);
@@ -54,7 +55,7 @@ function Following() {
             <div className="col-6">
               <div className="d-flex mb-3 mt-3">
                 <Link className="blackLink" to={`/profile/${user.username}`}>
-                  back{" "}
+                  <img src={arrow} alt="go back" />
                 </Link>
                 <div className="userinfo ms-5">
                   <h5>{user.firstname + " " + user.lastname}</h5>
@@ -73,6 +74,7 @@ function Following() {
 
                 <div className="link">
                   <Link
+                    id="choosed2"
                     className="blackLink"
                     to={`/profile/${user.username}/following`}
                   >
@@ -118,6 +120,7 @@ function Following() {
                           </button>
                         ) : (
                           <button
+                            id="followbutton1"
                             className="btn btn-tweet rounded-pill"
                             type="submit"
                             onClick={(e) => {

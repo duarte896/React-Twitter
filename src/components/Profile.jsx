@@ -77,6 +77,7 @@ function Profile() {
                         </button>
                       ) : (
                         <button
+                          id="followbutton"
                           type="submit"
                           className="btn btn-tweet rounded-pill mb-3"
                           onClick={(e) => {
@@ -96,13 +97,13 @@ function Profile() {
                   </div>
                   <div className="userInteraction d-flex align-items-end">
                     <Link
-                      className="text-muted me-2"
+                      className="nameLink text-muted me-2"
                       to={`/profile/${user.username}/followers`}
                     >
                       {followerList.length} Followers
                     </Link>
                     <Link
-                      className="text-muted"
+                      className="nameLink text-muted"
                       to={`/profile/${user.username}/following`}
                     >
                       {followingList.length} Following

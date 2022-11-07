@@ -64,6 +64,7 @@ function Followers() {
               <div id="head">
                 <div className="link">
                   <Link
+                    id="choosed1"
                     className="blackLink"
                     to={`/profile/${user.username}/followers`}
                   >
@@ -117,6 +118,7 @@ function Followers() {
                           </button>
                         ) : (
                           <button
+                            id="followerbutton"
                             className="btn btn-tweet rounded-pill"
                             type="submit"
                             onClick={(e) => {

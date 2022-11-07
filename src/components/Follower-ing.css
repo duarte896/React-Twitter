@@ -14,8 +14,10 @@
 #follower .box {
   padding: 5px;
 }
-
 #follower button {
+  border: 1px solid;
+}
+#followerbutton {
   background-color: #1d9bf0;
   border-radius: 30px;
   color: #f3f3f3;
@@ -45,6 +47,10 @@
 }
 
 #following button {
+  border: 1px solid;
+}
+
+#followbutton1 {
   background-color: #1d9bf0;
   border-radius: 30px;
   color: #f3f3f3;
@@ -58,4 +64,13 @@
 .blackLink {
   text-decoration: none;
   color: black;
+}
+
+#choosed1 {
+  text-decoration: underline;
+  color: #1d9bf0;
+}
+#choosed2 {
+  text-decoration: underline;
+  color: #1d9bf0;
 }
