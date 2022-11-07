@@ -99,7 +99,7 @@ function Home() {
                 })}
             </div>
           </div>
-          <div className="col-2">
+          <div className="col-sm-12 col-md-2 ">
             <RightSidebar />
           </div>
         </div>
