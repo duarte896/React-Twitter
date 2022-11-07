@@ -46,7 +46,7 @@ function Home() {
   function handleSubmitLogout() {
     dispatch(reset());
   }
-  console.log(user);
+
   return (
     <div className="main">
       <div className="container">
