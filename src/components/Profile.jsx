@@ -32,9 +32,8 @@ function Profile() {
       setUser(response.data.user);
     };
     getUser();
-  }, [toggle]);
+  }, [toggle, loggedUserFollowing]);
 
-  console.log(loggedUserFollowing);
   const handleSubmit = async (e, following) => {
     e.preventDefault();
     const follow = async () => {
@@ -72,7 +71,6 @@ function Profile() {
                           className="btn btn-tweet rounded-pill mb-3"
                           onClick={(e) => {
                             handleSubmit(e, user);
-                            setToggle(!toggle);
                           }}
                         >
                           Following
@@ -83,7 +81,6 @@ function Profile() {
                           className="btn btn-tweet rounded-pill mb-3"
                           onClick={(e) => {
                             handleSubmit(e, user);
-                            setToggle(!toggle);
                           }}
                         >
                           Follow
