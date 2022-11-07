@@ -5,7 +5,8 @@ import { faTrash, faHeart } from "@fortawesome/free-solid-svg-icons";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
-function HomeTweet({ tweet, user, toggle, setToggle }) {
+function ProfileTweet({ tweet, author, toggle, setToggle }) {
+  const user = useSelector((state) => state.user);
   const handleSubmitLike = async (e) => {
     e.preventDefault();
     await axios({
@@ -30,26 +31,23 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
     });
     setToggle(!toggle);
   };
-
+  console.log(user[0].loggedUser);
   return (
     <div className="d-flex flex-column">
       <div id="tweet">
         <div className="d-flex">
           <div className="tweetFoto">
-            <img src={tweet.author.avatar} alt="Foto de perfil de usuario" />
+            <img src={author.avatar} alt="Foto de perfil de usuario" />
           </div>
           <div>
             <div className="tweetUser d-flex">
               <h5 className="me-2">
-                <Link
-                  className="nameLink"
-                  to={`/profile/${tweet.author.username}`}
-                >
-                  {tweet.author.firstname + " " + tweet.author.lastname}
+                <Link className="nameLink" to={``}>
+                  {author.firstname + " " + author.lastname}
                 </Link>
               </h5>
               <h6 className="user card-subtitle mb-2 text-muted">
-                @{tweet.author.username}
+                @{author.username}
               </h6>
             </div>
             <div className="d-flex justify-content-between ">
@@ -69,7 +67,7 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
 
             <label htmlFor="">{tweet.likes.length}</label>
           </form>
-          {tweet.author.email === user[0].loggedUser.email && (
+          {author.email === user[0].loggedUser.email && (
             <form onSubmit={handleSubmitDelete}>
               <button type="submit" className="trash">
                 <FontAwesomeIcon icon={faTrash} />
@@ -82,4 +80,4 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
   );
 }
 
-export default HomeTweet;
+export default ProfileTweet;

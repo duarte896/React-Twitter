@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import "./Profile.css";
 import RightSidebar from "./RightSideBar";
 import LeftSidebar from "./LeftSideBar";
+import ProfileTweet from "./ProfileTweet";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -15,6 +16,7 @@ function Profile() {
   const [loggedUserFollowing, setLoggedUserFollowing] = useState([]);
   const [followerList, setFollowerList] = useState([]);
   const [followingList, setFollowingList] = useState([]);
+  const [toggle, setToggle] = useState(true);
   useEffect(() => {
     const getUser = async () => {
       const response = await axios({
@@ -30,9 +32,8 @@ function Profile() {
       setUser(response.data.user);
     };
     getUser();
-  }, []);
-  console.log(user._id);
-  console.log(loggedUser.loggedUser.id);
+  }, [toggle]);
+
   return (
     user && (
       <div className="main">
@@ -96,49 +97,13 @@ function Profile() {
               {userTweets &&
                 userTweets.map((tweet) => {
                   return (
-                    <div key={tweet._id} className="d-flex flex-column">
-                      <div id="tweet">
-                        <div className="d-flex">
-                          <div className="tweetFoto">
-                            <img
-                              src={user.avatar}
-                              alt="Foto de perfil de usuario"
-                            />
-                          </div>
-                          <div>
-                            <div className="tweetUser d-flex">
-                              <h5 className="me-2">
-                                <Link
-                                  className="nameLink"
-                                  to={`/profile/${user.username}`}
-                                >
-                                  {user.firstname + " " + user.lastname}
-                                </Link>
-                              </h5>
-                              <h6 className="user card-subtitle mb-2 text-muted">
-                                {"@" + user.username + " . " + tweet.createdAt}
-                              </h6>
-                            </div>
-                            <p className="card-text">{tweet.content}</p>
-                          </div>
-                        </div>
-                        <div className="actions">
-                          <form
-                            className="marginHeart"
-                            action="/tweet/<%= tweets[i].id %>/like"
-                            method="post"
-                          >
-                            <button type="submit">
-                              <i className="fa-solid fa-heart"></i>
-                            </button>
-
-                            <label htmlFor="">
-                              aca iria el numero de likes
-                            </label>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
+                    <ProfileTweet
+                      key={tweet._id}
+                      tweet={tweet}
+                      author={user}
+                      toggle={toggle}
+                      setToggle={setToggle}
+                    />
                   );
                 })}
             </div>
