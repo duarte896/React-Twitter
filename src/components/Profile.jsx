@@ -3,7 +3,7 @@ import "./Profile.css";
 import RightSidebar from "./RightSideBar";
 import LeftSidebar from "./LeftSideBar";
 import ProfileTweet from "./ProfileTweet";
-import { useEffect, useState } from "react";
+import { useEffect, useReducer, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -26,13 +26,27 @@ function Profile() {
         headers: { Authorization: `Bearer ${loggedUser.token}` },
       });
       setUserTweets(response.data.user.tweets);
-      setLoggedUserFollowing(response.data.loggedUserFollowing);
+      setLoggedUserFollowing(response.data.loggedUserfollowing);
       setFollowerList(response.data.user.followers);
       setFollowingList(response.data.user.following);
       setUser(response.data.user);
     };
     getUser();
-  }, [toggle]);
+  }, [toggle, loggedUserFollowing]);
+
+  const handleSubmit = async (e, following) => {
+    e.preventDefault();
+    const follow = async () => {
+      await axios({
+        method: "POST",
+        url: `${process.env.REACT_APP_API_URL}/user/${following._id}/follow`,
+
+        headers: { Authorization: `Bearer ${loggedUser.token}` },
+        params: {},
+      });
+    };
+    follow();
+  };
 
   return (
     user && (
@@ -46,15 +60,18 @@ function Profile() {
               <div className="costumBorder">
                 <div className="background"></div>
 
-                <div className="profilePhoto">
+                <div className="profilePhoto" id="prof">
                   <img src={user.avatar} alt="Imagen de usuario" />
 
                   {user._id !== loggedUser.loggedUser.id && (
-                    <form action="/user/<%=user._id%>/follow" method="post">
-                      {1 < 0 ? (
+                    <>
+                      {loggedUserFollowing.includes(user._id) ? (
                         <button
                           type="submit"
                           className="btn btn-tweet rounded-pill mb-3"
+                          onClick={(e) => {
+                            handleSubmit(e, user);
+                          }}
                         >
                           Following
                         </button>
@@ -62,11 +79,14 @@ function Profile() {
                         <button
                           type="submit"
                           className="btn btn-tweet rounded-pill mb-3"
+                          onClick={(e) => {
+                            handleSubmit(e, user);
+                          }}
                         >
                           Follow
                         </button>
                       )}
-                    </form>
+                    </>
                   )}
                 </div>
                 <div className="profileinfo d-flex justify-content-between">

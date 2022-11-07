@@ -5,12 +5,12 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Signup() {
-  const [firstName, setFirstName] = useState({});
-  const [lastName, setLastName] = useState({});
-  const [eMail, setEMail] = useState({});
-  const [userName, setUserName] = useState({});
-  const [password, setPassword] = useState({});
-  const [avatar, setAvatar] = useState({});
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [eMail, setEMail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [avatar, setAvatar] = useState(null);
 
   const navigate = useNavigate();
   const createUser = async (e) => {
@@ -26,8 +26,8 @@ function Signup() {
         password: password,
         avatar: avatar,
       },
-      params: {
-        // Aquí se pueden pasar parámetros que irían en el query string.
+      headers: {
+        "Content-Type": "multipart/form-data",
       },
     });
 
@@ -43,7 +43,7 @@ function Signup() {
             <h2 className="margin-aligment">Hi! Welcome to Twitter Clone 👋</h2>
           </div>
           <div id="right" className="col bg-white">
-            <form className="formRegister" method="post" onSubmit={createUser}>
+            <form className="formRegister" onSubmit={createUser}>
               <h2>Sign up</h2>
               <small>Create and account and star using Twitter</small>
               <div className="mb-1">
@@ -90,7 +90,6 @@ function Signup() {
                   onChange={(event) => setUserName(event.target.value)}
                 />
               </div>
-
               <div className="mb-1">
                 <label htmlFor="avatar" className="form-label"></label>
                 <input
@@ -99,7 +98,10 @@ function Signup() {
                   id="avatar"
                   name="avatar"
                   placeholder="Choose file..."
-                  onChange={(event) => setAvatar(event.target.value)}
+                  onChange={(event) => {
+                    console.log(event.target);
+                    return setAvatar(event.target.files[0]);
+                  }}
                 />
               </div>
               <div className="mb-1">
