@@ -62,14 +62,22 @@ function ProfileTweet({ tweet, author, toggle, setToggle }) {
             </p>
 
             <button type="submit">
-              <FontAwesomeIcon icon={faHeart} />
+              {/*  <i className="bi bi-heart-fill text-danger"></i>
+              <i className="bi bi-heart"></i> */}
+              <i
+                className={
+                  tweet.likes.includes(user[0].loggedUser.id)
+                    ? "bi bi-heart-fill text-danger"
+                    : "bi bi-heart"
+                }
+              ></i>
             </button>
 
             <label htmlFor="">{tweet.likes.length}</label>
           </form>
           {author.email === user[0].loggedUser.email && (
             <form onSubmit={handleSubmitDelete}>
-              <button type="submit" className="trash">
+              <button type="submit" className="trash text-danger">
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </form>
