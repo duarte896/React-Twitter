@@ -49,3 +49,7 @@
   border: 1px solid #f3f3f3;
   font-style: none;
 }
+.blackLink {
+  text-decoration: none;
+  color: black;
+}

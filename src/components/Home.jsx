@@ -6,7 +6,6 @@ import HomeTweet from "./HomeTweet";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { reset } from "../redux/usersSlice";
 
 function Home() {
   const [tweets, setTweets] = useState([]);
@@ -42,10 +41,6 @@ function Home() {
     });
     setToggle(!toggle);
   };
-
-  function handleSubmitLogout() {
-    dispatch(reset());
-  }
 
   return (
     <div className="main">
@@ -87,9 +82,6 @@ function Home() {
                       Tweet
                     </button>
                   </div>
-                </form>
-                <form onSubmit={handleSubmitLogout}>
-                  <button type="submit">Logout</button>
                 </form>
               </div>
               {tweets &&

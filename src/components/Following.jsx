@@ -40,7 +40,9 @@ function Following() {
             </div>
             <div className="col-6">
               <div className="d-flex mb-3 mt-3">
-                <Link to={`/profile/${user.username}`}>back </Link>
+                <Link className="blackLink" to={`/profile/${user.username}`}>
+                  back{" "}
+                </Link>
                 <div className="userinfo ms-5">
                   <h5>{user.firstname + " " + user.lastname}</h5>
                   <h6>@{user.username}</h6>
@@ -48,13 +50,19 @@ function Following() {
               </div>
               <div id="head">
                 <div className="link">
-                  <Link to={`/profile/${user.username}/followers`}>
+                  <Link
+                    className="blackLink"
+                    to={`/profile/${user.username}/followers`}
+                  >
                     Followers
                   </Link>
                 </div>
 
                 <div className="link">
-                  <Link to={`/profile/${user.username}/following`}>
+                  <Link
+                    className="blackLink"
+                    to={`/profile/${user.username}/following`}
+                  >
                     Following
                   </Link>
                 </div>
@@ -72,7 +80,10 @@ function Following() {
                         </div>
                         <div>
                           <h5 className="me-2">
-                            <Link to={`/profile/${following.username}`}>
+                            <Link
+                              className="blackLink"
+                              to={`/profile/${following.username}`}
+                            >
                               {following.firstname + " " + following.lastname}
                             </Link>
                           </h5>

@@ -40,7 +40,10 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
           <div>
             <div className="tweetUser d-flex">
               <h5 className="me-2">
-                <Link to={`/profile/${tweet.author.username}`}>
+                <Link
+                  className="nameLink"
+                  to={`/profile/${tweet.author.username}`}
+                >
                   {tweet.author.firstname + " " + tweet.author.lastname}
                 </Link>
               </h5>
