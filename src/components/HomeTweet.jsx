@@ -77,7 +77,7 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
           </form>
           {tweet.author.email === user[0].loggedUser.email && (
             <form onSubmit={handleSubmitDelete}>
-              <button type="submit" className="trash">
+              <button type="submit" className="trash text-danger">
                 <FontAwesomeIcon icon={faTrash} />
               </button>
             </form>
