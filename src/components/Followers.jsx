@@ -11,7 +11,6 @@ function Followers() {
   const [loggedUserFollowing, setLoggedUserFollowing] = useState([]);
   const [user, setUser] = useState({});
   const params = useParams();
-
   const token = useSelector((state) => state.user[0].token);
 
   useEffect(() => {
@@ -28,7 +27,21 @@ function Followers() {
       setUser(response.data.user);
     };
     getFollowers();
-  }, []);
+  }, [loggedUserFollowing]);
+
+  const handleSubmit = async (e, follower) => {
+    e.preventDefault();
+    const follow = async () => {
+      await axios({
+        method: "POST",
+        url: `${process.env.REACT_APP_API_URL}/user/${follower._id}/follow`,
+
+        headers: { Authorization: `Bearer ${token}` },
+        params: {},
+      });
+    };
+    follow();
+  };
 
   return (
     user && (
@@ -92,26 +105,27 @@ function Followers() {
                         </div>
                       </div>
                       <div>
-                        <form
-                          action="/user/<%=follower._id%>/2/follow"
-                          method="post"
-                        >
-                          {loggedUserFollowing.includes(follower._id) ? (
-                            <button
-                              className="btn btn-tweet rounded-pill"
-                              type="submit"
-                            >
-                              Following
-                            </button>
-                          ) : (
-                            <button
-                              className="btn btn-tweet rounded-pill"
-                              type="submit"
-                            >
-                              Follow
-                            </button>
-                          )}
-                        </form>
+                        {loggedUserFollowing.includes(follower._id) ? (
+                          <button
+                            className="btn btn-tweet rounded-pill"
+                            type="submit"
+                            onClick={(e) => {
+                              handleSubmit(e, follower);
+                            }}
+                          >
+                            Following
+                          </button>
+                        ) : (
+                          <button
+                            className="btn btn-tweet rounded-pill"
+                            type="submit"
+                            onClick={(e) => {
+                              handleSubmit(e, follower);
+                            }}
+                          >
+                            Follow
+                          </button>
+                        )}
                       </div>
                     </div>
                   );
