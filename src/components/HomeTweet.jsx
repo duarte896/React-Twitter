@@ -50,7 +50,7 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
                 @{tweet.author.username}
               </h6>
             </div>
-            <div className="d-flex justify-content-between ">
+            <div>
               <p className="card-text">{tweet.content}</p>
             </div>
           </div>
