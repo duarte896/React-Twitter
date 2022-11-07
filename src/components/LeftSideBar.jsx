@@ -3,6 +3,7 @@ import HomeSvg from "../img/HomeImage.svg";
 import ProfileButtonImage from "../img/ProfileButtonImage.svg";
 import TwitterLogoImage from "../img/TwitterLogoImage.svg";
 import TweetLogoImage from "../img/logoTweetHome.svg";
+import LogoutImage from "../img/logout.svg";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { reset } from "../redux/usersSlice";
@@ -42,11 +43,15 @@ function LeftSidebar() {
       <div className="tweet-div position-absolute bottom-0">
         <form onSubmit={handleSubmitLogout}>
           <Button
+            id="logout-buttom"
             className="  rounded-pill  w-100"
             type="submit"
             variant="danger"
           >
             Logout
+          </Button>
+          <Button id="tweet-logo" className="" type="submit" variant="danger">
+            <img src={LogoutImage} alt="logout" />
           </Button>
         </form>
       </div>
