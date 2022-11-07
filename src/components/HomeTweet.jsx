@@ -11,9 +11,7 @@ function HomeTweet({ tweet, user, toggle, setToggle }) {
     await axios({
       method: "POST",
       url: `${process.env.REACT_APP_API_URL}/tweet/${tweet._id}/like`,
-      data: {
-        user: user[0].loggedUser.id,
-      },
+
       params: { id: tweet._id },
       headers: { Authorization: `Bearer ${user[0].token}` },
     });
