@@ -50,3 +50,7 @@
 #tweet .actions {
   color: rgb(255, 81, 81);
 }
+.nameLink {
+  text-decoration: none;
+  color: black;
+}

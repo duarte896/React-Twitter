@@ -16,20 +16,19 @@
   text-decoration: none;
   color: black;
 }
-.btn-tweet {
-  background-color: var(--colortwitterblue);
+#btn-tweet {
+  background-color: #1d9bf0;
+}
+.btn-tweet-link {
+  display: inline-block;
+  text-decoration: none;
   color: white;
 }
-.btn-popover {
-  border: none;
-  padding: 0;
-  background-color: white;
+.tweet-div {
+  width: 10rem;
 }
-.btn-popover img {
-  border-radius: 50%;
-  object-fit: cover;
-  width: 50px;
-  height: 50px;
+.link-sidebar {
+  display: inline-block;
 }
 .izquierdo {
   height: 95vh;
@@ -41,4 +40,21 @@
   width: 40px;
   height: 40px;
   margin-right: 15px;
+}
+.tweet-logo {
+  display: none;
+}
+@media (max-width: 1200px) {
+  .link-sidebar {
+    display: none;
+  }
+  .btn-tweet-link {
+    display: none;
+  }
+  .tweet-div {
+    width: 100%;
+  }
+  .tweet-logo {
+    display: inline-block;
+  }
 }

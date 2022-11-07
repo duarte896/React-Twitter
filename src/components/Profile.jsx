@@ -108,7 +108,10 @@ function Profile() {
                           <div>
                             <div className="tweetUser d-flex">
                               <h5 className="me-2">
-                                <Link to={`/profile/${user.username}`}>
+                                <Link
+                                  className="nameLink"
+                                  to={`/profile/${user.username}`}
+                                >
                                   {user.firstname + " " + user.lastname}
                                 </Link>
                               </h5>
