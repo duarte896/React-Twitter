@@ -19,7 +19,7 @@ function LeftSidebar() {
           Home
         </Link>
         <Link to={`/profile/${user.username}`} className="mb-4 asdf links">
-          <img className="me-4" src={ProfileButtonImage} alt="Home Icon" />
+          <img className=" userPic" src={user.avatar} alt="Home Icon" />
           Profile
         </Link>
         <div className="d-grid gap-2">

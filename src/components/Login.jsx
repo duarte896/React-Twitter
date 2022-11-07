@@ -25,7 +25,7 @@ function Login() {
     });
 
     dispatch(storeToken(response.data));
-
+    console.log(response.data);
     navigate("/");
   };
 

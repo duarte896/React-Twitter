@@ -46,7 +46,7 @@ function Home() {
   function handleSubmitLogout() {
     dispatch(reset());
   }
-
+  console.log(user);
   return (
     <div className="main">
       <div className="container">
@@ -60,7 +60,7 @@ function Home() {
               <div className="d-flex" id="tweet">
                 <div className="tweetFoto">
                   <img
-                    src={ProfileButtonImage}
+                    src={user[0].loggedUser.avatar}
                     alt="Foto de perfil de usuario"
                   />
                 </div>
