@@ -53,27 +53,30 @@ function Home() {
           <div className="col-8">
             <div>
               <h2 id="titleHome">Home</h2>
-              <div className="d-flex" id="tweet">
-                <div className="tweetFoto">
+              <div className="d-flex" id="create-tweet">
+                <div className="home-image">
                   <img
+                    className="tweet-image"
                     src={user[0].loggedUser.avatar}
                     alt="Foto de perfil de usuario"
                   />
                 </div>
-                <form onSubmit={handleSubmit}>
-                  <p>
+                <form className="form-home" onSubmit={handleSubmit}>
+                  {/* <p>
                     <input type="hidden" id="user" name="user" />
-                  </p>
-                  <textarea
-                    name="tweetContent"
-                    id="tweetContent"
-                    placeholder="What's happening?"
-                    cols="40"
-                    rows="3"
-                    maxLength="140"
-                    value={newTweetContent}
-                    onChange={(e) => setNewTweetContent(e.target.value)}
-                  ></textarea>
+                  </p> */}
+                  <div class="mb-3">
+                    <label for="tweet-content" class="form-label"></label>
+                    <textarea
+                      class="form-control"
+                      id="tweet-content"
+                      placeholder="What's happening?"
+                      rows="3"
+                      maxLength="140"
+                      value={newTweetContent}
+                      onChange={(e) => setNewTweetContent(e.target.value)}
+                    ></textarea>
+                  </div>
                   <div className="btn-form">
                     <button
                       id="btn-tweet"

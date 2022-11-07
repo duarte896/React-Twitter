@@ -24,6 +24,7 @@
 }
 .userFoto {
   display: inline-block;
+
   padding-left: 18px;
 }
 #newTweet textarea {
@@ -39,21 +40,31 @@
   border-radius: 25px;
 }
 
-textarea {
-  resize: none;
-}
 #tweetContent {
   border: none;
 }
 .btn-form {
   display: flex;
   justify-content: flex-end;
-  width: 700px;
 }
 #titleHome {
-  padding: 16px;
+  padding: 16px 16px 0px 16px;
 }
-
+.form-home {
+  width: 45rem;
+}
+.tweet-image {
+  border-radius: 50%;
+  width: 50px;
+  margin-right: 15px;
+  margin-top: 25px;
+}
+#create-tweet {
+  padding: 0px 16px 16px 16px;
+  border-bottom: 1px solid #f3f3f3;
+  border-left: 1px solid #f3f3f3;
+  border-right: 1px solid #f3f3f3;
+}
 #btn-tweet {
   background-color: #1d9bf0;
   color: white;
