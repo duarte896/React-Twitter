@@ -31,8 +31,7 @@ function Profile() {
     };
     getUser();
   }, []);
-  console.log(user._id);
-  console.log(loggedUser.loggedUser.id);
+
   return (
     user && (
       <div className="main">
